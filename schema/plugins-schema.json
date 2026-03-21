@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/home-screens/home-screens-plugins/main/schema/plugins-schema.json",
+  "title": "Home Screens Plugin Registry",
+  "description": "Schema for the Home Screens curated plugin registry (plugins.json)",
+  "type": "object",
+  "required": ["schemaVersion", "lastUpdated", "plugins"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "description": "Schema version number",
+      "minimum": 1
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last registry update"
+    },
+    "plugins": {
+      "type": "array",
+      "description": "List of registered plugins",
+      "items": {
+        "$ref": "#/$defs/RegistryPlugin"
+      }
+    }
+  },
+  "$defs": {
+    "ModuleCategory": {
+      "type": "string",
+      "enum": [
+        "Time & Date",
+        "Weather & Environment",
+        "News & Finance",
+        "Knowledge & Fun",
+        "Personal",
+        "Media & Display",
+        "Travel"
+      ],
+      "description": "Module category (must match one of the built-in categories)"
+    },
+    "RegistryPluginVersion": {
+      "type": "object",
+      "required": ["version", "minAppVersion", "releaseDate", "downloadUrl", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Semantic version of this release",
+          "pattern": "^\\d+\\.\\d+\\.\\d+"
+        },
+        "minAppVersion": {
+          "type": "string",
+          "description": "Minimum Home Screens app version required",
+          "pattern": "^\\d+\\.\\d+\\.\\d+"
+        },
+        "maxAppVersion": {
+          "type": "string",
+          "description": "Maximum Home Screens app version supported (optional)",
+          "pattern": "^\\d+\\.\\d+\\.\\d+"
+        },
+        "releaseDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 release date"
+        },
+        "downloadUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to download the plugin tarball"
+        },
+        "sha256": {
+          "type": "string",
+          "description": "SHA-256 hash of the plugin tarball",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "changelog": {
+          "type": "string",
+          "description": "Release notes for this version (optional)"
+        }
+      }
+    },
+    "RegistryPlugin": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "description",
+        "author",
+        "repo",
+        "license",
+        "category",
+        "tags",
+        "icon",
+        "verified",
+        "versions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique plugin identifier (e.g. 'my-cool-widget')",
+          "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable plugin name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Short description of what the plugin does"
+        },
+        "author": {
+          "type": "string",
+          "description": "Plugin author name or GitHub username"
+        },
+        "repo": {
+          "type": "string",
+          "description": "GitHub repository (owner/repo format, e.g. 'janedoe/hs-weather-radar')"
+        },
+        "license": {
+          "type": "string",
+          "description": "SPDX license identifier (e.g. 'MIT', 'Apache-2.0')"
+        },
+        "category": {
+          "$ref": "#/$defs/ModuleCategory"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Searchable tags"
+        },
+        "icon": {
+          "type": "string",
+          "description": "Lucide icon name for the plugin"
+        },
+        "verified": {
+          "type": "boolean",
+          "description": "Whether the plugin has been verified by maintainers"
+        },
+        "versions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RegistryPluginVersion"
+          },
+          "minItems": 1,
+          "description": "Available versions (newest first)"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/home-screens/home-screens-plugins/main/schema/manifest-schema.json",
+  "title": "Home Screens Plugin Manifest",
+  "description": "Schema for a Home Screens plugin's manifest.json file",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "description",
+    "author",
+    "license",
+    "minAppVersion",
+    "moduleType",
+    "category",
+    "icon",
+    "defaultConfig",
+    "defaultSize",
+    "exports"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique plugin identifier matching the registry entry",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable plugin name"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of this plugin build",
+      "pattern": "^\\d+\\.\\d+\\.\\d+"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description of what the plugin does"
+    },
+    "author": {
+      "type": "string",
+      "description": "Plugin author name or GitHub username"
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX license identifier (e.g. 'MIT', 'Apache-2.0')"
+    },
+    "minAppVersion": {
+      "type": "string",
+      "description": "Minimum Home Screens app version required",
+      "pattern": "^\\d+\\.\\d+\\.\\d+"
+    },
+    "moduleType": {
+      "type": "string",
+      "description": "The module type identifier. The app registers it as plugin:<moduleType>.",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+    },
+    "category": {
+      "$ref": "#/$defs/ModuleCategory"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Lucide icon name for the module"
+    },
+    "defaultConfig": {
+      "type": "object",
+      "description": "Default configuration values for new instances of this module"
+    },
+    "defaultSize": {
+      "type": "object",
+      "required": ["w", "h"],
+      "additionalProperties": false,
+      "properties": {
+        "w": {
+          "type": "integer",
+          "description": "Default grid width",
+          "minimum": 1
+        },
+        "h": {
+          "type": "integer",
+          "description": "Default grid height",
+          "minimum": 1
+        }
+      }
+    },
+    "configSchema": {
+      "$ref": "#/$defs/PluginConfigSchema",
+      "description": "Optional schema describing the plugin's configurable properties"
+    },
+    "exports": {
+      "type": "object",
+      "required": ["component"],
+      "additionalProperties": false,
+      "properties": {
+        "component": {
+          "type": "string",
+          "description": "Name of the component export (typically 'default')"
+        },
+        "configSection": {
+          "type": "string",
+          "description": "Optional named export for the config editor section"
+        }
+      }
+    },
+    "dataRequirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["location", "weather", "calendar"]
+      },
+      "uniqueItems": true,
+      "description": "Optional list of shared data the plugin needs from the host app"
+    },
+    "prefetchUrl": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "null" }
+      ],
+      "description": "Optional URL for the app to prefetch data on behalf of the plugin"
+    }
+  },
+  "$defs": {
+    "ModuleCategory": {
+      "type": "string",
+      "enum": [
+        "Time & Date",
+        "Weather & Environment",
+        "News & Finance",
+        "Knowledge & Fun",
+        "Personal",
+        "Media & Display",
+        "Travel"
+      ],
+      "description": "Module category (must match one of the built-in categories)"
+    },
+    "PluginConfigSchema": {
+      "type": "object",
+      "required": ["type", "properties"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "object"
+        },
+        "properties": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/PluginConfigProperty"
+          }
+        }
+      },
+      "description": "JSON Schema with ui:widget annotations for declarative config rendering"
+    },
+    "PluginConfigProperty": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["string", "number", "boolean", "array"],
+          "description": "JSON Schema type of this property"
+        },
+        "title": {
+          "type": "string",
+          "description": "Human-readable label for the config field"
+        },
+        "description": {
+          "type": "string",
+          "description": "Help text shown below the control"
+        },
+        "default": {
+          "description": "Default value for this field"
+        },
+        "minimum": {
+          "type": "number",
+          "description": "Minimum value for number fields"
+        },
+        "maximum": {
+          "type": "number",
+          "description": "Maximum value for number fields"
+        },
+        "enum": {
+          "type": "array",
+          "items": { "type": ["string", "number"] },
+          "description": "Allowed values for select widgets"
+        },
+        "enumLabels": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Display labels corresponding to enum values"
+        },
+        "ui:widget": {
+          "type": "string",
+          "enum": ["slider", "toggle", "text", "select", "color", "number"],
+          "description": "UI widget type for the config renderer"
+        },
+        "ui:step": {
+          "type": "number",
+          "description": "Step increment for slider widgets"
+        }
+      }
+    }
+  }
+}
