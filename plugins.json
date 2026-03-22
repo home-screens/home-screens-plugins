@@ -20,7 +20,7 @@
           "minAppVersion": "0.20.0",
           "releaseDate": "2026-03-21T00:00:00Z",
           "downloadUrl": "https://github.com/home-screens/home-screens-plugin-standings/releases/download/v1.2.0/plugin.tar.gz",
-          "sha256": "cbba441ed18bb541c3bddd39c81062d19a85a5dd66fc79f1029ad0749f3a904d",
+          "sha256": "d017a18685ce0937488deb029c2eee437f1a0bd6c27c15521b4af6eb9fa38151",
           "changelog": "Initial release: 12 leagues, 3 views, 3 grouping modes, full SDK feature coverage"
         }
       ]
