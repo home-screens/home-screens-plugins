@@ -140,6 +140,15 @@
           "type": "boolean",
           "description": "Whether the plugin has been verified by maintainers"
         },
+        "permissions": {
+          "type": "array",
+          "description": "Declared plugin capabilities surfaced to users during install",
+          "items": {
+            "type": "string",
+            "enum": ["network", "secrets", "events", "storage"]
+          },
+          "uniqueItems": true
+        },
         "versions": {
           "type": "array",
           "items": {

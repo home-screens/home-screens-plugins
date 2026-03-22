@@ -92,6 +92,7 @@ Before submitting, make sure you have:
      "tags": ["example", "widget"],
      "icon": "sparkles",
      "verified": false,
+     "permissions": ["network", "secrets"],
      "versions": [
        {
          "version": "1.0.0",
@@ -135,6 +136,8 @@ sha256sum plugin.tar.gz
 - Each version entry must include a valid `sha256` hash of the downloadable tarball.
 - The `downloadUrl` must point to a publicly accessible file (typically a GitHub release asset).
 - The `minAppVersion` must be `0.16.0` or later (the first version with plugin support).
+- Plugins using the server-side proxy (`pluginFetch`) or storing secrets must declare `permissions: ["network", "secrets"]`.
+- Permissions must honestly reflect the plugin's actual capabilities. Undeclared capabilities will be flagged during review.
 - A license is required. MIT or Apache-2.0 are recommended for maximum compatibility.
 
 ## Review Process
@@ -142,9 +145,10 @@ sha256sum plugin.tar.gz
 After you open a PR:
 
 1. A maintainer will review your submission for completeness and schema compliance.
-2. The plugin will be installed and tested in a development environment.
-3. If everything looks good, the PR will be merged and your plugin will appear in the Plugin Store.
-4. Maintainers may set the `verified` flag after extended testing and review.
+2. Declared permissions are verified against the plugin's actual behavior — undeclared network access, secret storage, or event emission will be flagged.
+3. The plugin will be installed and tested in a development environment.
+4. If everything looks good, the PR will be merged and your plugin will appear in the Plugin Store.
+5. Maintainers may set the `verified` flag after extended testing and review.
 
 ## Updating Your Plugin
 

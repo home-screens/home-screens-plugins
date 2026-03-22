@@ -1,5 +1,29 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-03-20T00:00:00Z",
-  "plugins": []
+  "lastUpdated": "2026-03-21T00:00:00Z",
+  "plugins": [
+    {
+      "id": "standings",
+      "name": "Sports Standings",
+      "description": "Live sports standings for 12 leagues with table, compact, and conference views. Powered by ESPN.",
+      "author": "home-screens",
+      "repo": "home-screens/home-screens-plugin-standings",
+      "license": "MIT",
+      "category": "News & Finance",
+      "tags": ["sports", "standings", "espn", "nfl", "nba", "mlb", "nhl", "soccer"],
+      "icon": "Trophy",
+      "verified": true,
+      "permissions": ["network", "secrets", "events"],
+      "versions": [
+        {
+          "version": "1.2.0",
+          "minAppVersion": "0.20.0",
+          "releaseDate": "2026-03-21T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-standings/releases/download/v1.2.0/plugin.tar.gz",
+          "sha256": "5abc6850f4f200649e8db82d54a8f7c18a81b47cda525eb4250d1d9852d05462",
+          "changelog": "Initial release: 12 leagues, 3 views, 3 grouping modes, full SDK feature coverage"
+        }
+      ]
+    }
+  ]
 }

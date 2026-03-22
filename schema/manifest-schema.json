@@ -119,6 +119,70 @@
         { "type": "null" }
       ],
       "description": "Optional URL for the app to prefetch data on behalf of the plugin"
+    },
+    "defaultStyle": {
+      "type": "object",
+      "description": "Optional partial ModuleStyle overrides applied to new instances",
+      "properties": {
+        "fontSize": { "type": "number" },
+        "fontFamily": { "type": "string" },
+        "color": { "type": "string" },
+        "backgroundColor": { "type": "string" },
+        "borderRadius": { "type": "number" },
+        "padding": { "type": "number" },
+        "opacity": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "secrets": {
+      "type": "array",
+      "description": "Secrets (API keys, credentials) the plugin requires",
+      "items": {
+        "type": "object",
+        "required": ["key", "label", "required"],
+        "additionalProperties": false,
+        "properties": {
+          "key": { "type": "string", "description": "Secret identifier (e.g. 'api_key')" },
+          "label": { "type": "string", "description": "Display name (e.g. 'Spotify API Key')" },
+          "description": { "type": "string", "description": "Help text for the user" },
+          "required": { "type": "boolean", "description": "Whether the plugin requires this secret to function" },
+          "placeholder": { "type": "string", "description": "Input hint" }
+        }
+      }
+    },
+    "allowedDomains": {
+      "type": "array",
+      "description": "Domains the plugin may access via the server-side proxy (e.g. 'api.spotify.com', '*.openweathermap.org')",
+      "items": { "type": "string" }
+    },
+    "permissions": {
+      "type": "array",
+      "description": "Declared plugin capabilities (transparency for users, not runtime-enforced)",
+      "items": {
+        "type": "string",
+        "enum": ["network", "secrets", "events", "storage"]
+      },
+      "uniqueItems": true
+    },
+    "configMigrations": {
+      "type": "object",
+      "description": "Maps fromVersion to migration instructions (renames + defaults) for config schema changes between versions",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "renames": {
+            "type": "object",
+            "description": "Map of old config key → new config key",
+            "additionalProperties": { "type": "string" }
+          },
+          "defaults": {
+            "type": "object",
+            "description": "Default values for new config keys",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "$defs": {
@@ -159,7 +223,7 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["string", "number", "boolean", "array"],
+          "enum": ["string", "number", "boolean", "array", "object"],
           "description": "JSON Schema type of this property"
         },
         "title": {
@@ -193,12 +257,39 @@
         },
         "ui:widget": {
           "type": "string",
-          "enum": ["slider", "toggle", "text", "select", "color", "number"],
+          "enum": ["slider", "toggle", "text", "select", "color", "number", "textarea", "multiselect", "time"],
           "description": "UI widget type for the config renderer"
         },
         "ui:step": {
           "type": "number",
           "description": "Step increment for slider widgets"
+        },
+        "ui:group": {
+          "type": "string",
+          "description": "Visual section grouping header"
+        },
+        "ui:showWhen": {
+          "type": "object",
+          "required": ["field", "equals"],
+          "additionalProperties": false,
+          "properties": {
+            "field": { "type": "string", "description": "Other config field key" },
+            "equals": { "description": "Show this field when field === equals" }
+          },
+          "description": "Conditional visibility based on another config field's value"
+        },
+        "ui:placeholder": {
+          "type": "string",
+          "description": "Input placeholder text"
+        },
+        "items": {
+          "$ref": "#/$defs/PluginConfigProperty",
+          "description": "Schema for each array element (when type is 'array')"
+        },
+        "properties": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/PluginConfigProperty" },
+          "description": "Nested properties (when type is 'object')"
         }
       }
     }
