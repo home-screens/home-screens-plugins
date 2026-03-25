@@ -43,7 +43,7 @@
           "minAppVersion": "0.20.0",
           "releaseDate": "2026-03-25T00:00:00Z",
           "downloadUrl": "https://github.com/home-screens/home-screens-plugin-flag-status/releases/download/v1.0.0/plugin.tar.gz",
-          "sha256": "128698be0aa0e4f34cc3c6a2b8b5427bde88f454d3d2098d7010ead314d1163b",
+          "sha256": "db90f74c6a7494167678894ac91a93415bcfcf4a8ebe2c581b5c6ed5d664bfe0",
           "changelog": "Initial release: US flag half-staff status with SVG visualization, FlagWatch API integration"
         }
       ]
