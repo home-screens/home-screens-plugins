@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-03-21T00:00:00Z",
+  "lastUpdated": "2026-03-25T00:00:00Z",
   "plugins": [
     {
       "id": "standings",
@@ -22,6 +22,29 @@
           "downloadUrl": "https://github.com/home-screens/home-screens-plugin-standings/releases/download/v1.2.0/plugin.tar.gz",
           "sha256": "d017a18685ce0937488deb029c2eee437f1a0bd6c27c15521b4af6eb9fa38151",
           "changelog": "Initial release: 12 leagues, 3 views, 3 grouping modes, full SDK feature coverage"
+        }
+      ]
+    },
+    {
+      "id": "flag-status",
+      "name": "US Flag Status",
+      "description": "Displays whether the US flag is at full staff or half-staff, with the proclamation reason. Data from the FlagWatch API.",
+      "author": "home-screens",
+      "repo": "home-screens/home-screens-plugin-flag-status",
+      "license": "MIT",
+      "category": "Knowledge & Fun",
+      "tags": ["flag", "us", "half-staff", "patriotic", "government"],
+      "icon": "Flag",
+      "verified": true,
+      "permissions": ["network"],
+      "versions": [
+        {
+          "version": "1.0.0",
+          "minAppVersion": "0.20.0",
+          "releaseDate": "2026-03-25T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-flag-status/releases/download/v1.0.0/plugin.tar.gz",
+          "sha256": "128698be0aa0e4f34cc3c6a2b8b5427bde88f454d3d2098d7010ead314d1163b",
+          "changelog": "Initial release: US flag half-staff status with SVG visualization, FlagWatch API integration"
         }
       ]
     }
