@@ -1,6 +1,6 @@
 # Home Screens Plugin Registry
 
-The curated plugin registry for [Home Screens](https://github.com/home-screens/home-screens), a smart display system for Raspberry Pi.
+The curated plugin registry for [Home Screens](https://homescreens.dev) — the open-source smart display system for Raspberry Pi. ([Source code on GitHub](https://github.com/home-screens/home-screens))
 
 This repository contains the plugin catalog that the Home Screens app fetches to discover and install community plugins. The app reads the registry from:
 
