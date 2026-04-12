@@ -1,30 +1,7 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-03-26T00:00:00Z",
+  "lastUpdated": "2026-04-12T00:00:00Z",
   "plugins": [
-    {
-      "id": "standings",
-      "name": "Sports Standings",
-      "description": "Live sports standings for 12 leagues with table, compact, and conference views. Powered by ESPN.",
-      "author": "home-screens",
-      "repo": "home-screens/home-screens-plugin-standings",
-      "license": "MIT",
-      "category": "News & Finance",
-      "tags": ["sports", "standings", "espn", "nfl", "nba", "mlb", "nhl", "soccer"],
-      "icon": "Trophy",
-      "verified": true,
-      "permissions": ["network", "secrets", "events"],
-      "versions": [
-        {
-          "version": "1.2.0",
-          "minAppVersion": "0.20.0",
-          "releaseDate": "2026-03-21T00:00:00Z",
-          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-standings/releases/download/v1.2.0/plugin.tar.gz",
-          "sha256": "d017a18685ce0937488deb029c2eee437f1a0bd6c27c15521b4af6eb9fa38151",
-          "changelog": "Initial release: 12 leagues, 3 views, 3 grouping modes, full SDK feature coverage"
-        }
-      ]
-    },
     {
       "id": "flag-status",
       "name": "US Flag Status",
@@ -68,6 +45,29 @@
           "downloadUrl": "https://github.com/home-screens/home-screens-plugin-json-data/releases/download/v1.0.0/plugin.tar.gz",
           "sha256": "0c67ebf7c1cd3600d8beb02fde04aae3834cf6f02b5459c8a795d93c83119349",
           "changelog": "Initial release: 5 display modes, auto-detect fields, conditional rules, modal config with live preview"
+        }
+      ]
+    },
+    {
+      "id": "celestial",
+      "name": "Celestial Tracker",
+      "description": "Beautiful sun and moon tracker with dynamic sky arc, NASA moon photo, real-time celestial data, and dawn/dusk sky tints. No API key required.",
+      "author": "home-screens",
+      "repo": "home-screens/home-screens-plugin-celestial",
+      "license": "MIT",
+      "category": "Weather & Environment",
+      "tags": ["sun", "moon", "astronomy", "celestial", "sky", "phase", "sunrise", "sunset"],
+      "icon": "Moon",
+      "verified": true,
+      "permissions": [],
+      "versions": [
+        {
+          "version": "1.3.0",
+          "minAppVersion": "1.0.0",
+          "releaseDate": "2026-04-12T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-celestial/releases/download/v1.3.0/plugin.tar.gz",
+          "sha256": "5f882380f7b68b213fa055bbdbc4d48ab169229beef8d64a9c41c0f8f46a16a2",
+          "changelog": "Initial release: sky arc with bezier smoothing, NASA moon photo with earthshine, procedural SVG sun, dawn/dusk tints, compact view"
         }
       ]
     }
