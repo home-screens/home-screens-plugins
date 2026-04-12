@@ -66,7 +66,7 @@
           "minAppVersion": "1.0.0",
           "releaseDate": "2026-04-12T00:00:00Z",
           "downloadUrl": "https://github.com/home-screens/home-screens-plugin-celestial/releases/download/v1.3.0/plugin.tar.gz",
-          "sha256": "5f882380f7b68b213fa055bbdbc4d48ab169229beef8d64a9c41c0f8f46a16a2",
+          "sha256": "b89376e402b1673b553c2258cf3a11d1caede69ecaa2ea4e4896e1a3682c52be",
           "changelog": "Initial release: sky arc with bezier smoothing, NASA moon photo with earthshine, procedural SVG sun, dawn/dusk tints, compact view"
         }
       ]
