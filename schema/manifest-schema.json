@@ -127,10 +127,12 @@
         "fontSize": { "type": "number" },
         "fontFamily": { "type": "string" },
         "color": { "type": "string" },
+        "textColor": { "type": "string" },
         "backgroundColor": { "type": "string" },
         "borderRadius": { "type": "number" },
         "padding": { "type": "number" },
-        "opacity": { "type": "number" }
+        "opacity": { "type": "number" },
+        "backdropBlur": { "type": "number" }
       },
       "additionalProperties": false
     },
@@ -157,10 +159,10 @@
     },
     "permissions": {
       "type": "array",
-      "description": "Declared plugin capabilities (transparency for users, not runtime-enforced)",
+      "description": "Declared plugin capabilities. Most are transparency-only; 'localNetwork' is runtime-enforced by the proxy.",
       "items": {
         "type": "string",
-        "enum": ["network", "secrets", "events", "storage"]
+        "enum": ["network", "localNetwork", "secrets", "events", "storage"]
       },
       "uniqueItems": true
     },

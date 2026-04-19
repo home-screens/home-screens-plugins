@@ -142,10 +142,10 @@
         },
         "permissions": {
           "type": "array",
-          "description": "Declared plugin capabilities surfaced to users during install",
+          "description": "Declared plugin capabilities surfaced to users during install. 'localNetwork' is runtime-enforced by the proxy.",
           "items": {
             "type": "string",
-            "enum": ["network", "secrets", "events", "storage"]
+            "enum": ["network", "localNetwork", "secrets", "events", "storage"]
           },
           "uniqueItems": true
         },
