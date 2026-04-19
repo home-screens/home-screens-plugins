@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-04-12T00:00:00Z",
+  "lastUpdated": "2026-04-19T00:00:00Z",
   "plugins": [
     {
       "id": "flag-status",
@@ -45,6 +45,29 @@
           "downloadUrl": "https://github.com/home-screens/home-screens-plugin-json-data/releases/download/v1.0.0/plugin.tar.gz",
           "sha256": "0c67ebf7c1cd3600d8beb02fde04aae3834cf6f02b5459c8a795d93c83119349",
           "changelog": "Initial release: 5 display modes, auto-detect fields, conditional rules, modal config with live preview"
+        }
+      ]
+    },
+    {
+      "id": "home-assistant",
+      "name": "Home Assistant",
+      "description": "Beautiful entity cards, area grouping, and interactive controls for your Home Assistant instance. Lights, climate, media, covers, locks — no code, no templates.",
+      "author": "home-screens",
+      "repo": "home-screens/home-screens-plugin-home-assistant",
+      "license": "MIT",
+      "category": "Personal",
+      "tags": ["home-assistant", "smart-home", "iot", "lights", "climate", "sensors", "cameras"],
+      "icon": "Home",
+      "verified": false,
+      "permissions": ["network", "localNetwork", "secrets"],
+      "versions": [
+        {
+          "version": "1.0.0",
+          "minAppVersion": "1.0.0",
+          "releaseDate": "2026-04-19T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.0.0/plugin.tar.gz",
+          "sha256": "a2711fd4adfb9ae59bc0321f791c058ded8afde7c08aa14b97f935795ac73679",
+          "changelog": "Initial release: 8 views (card grid, status board, by area, single entity/row, climate, media, cameras), 15+ domain-aware cards, searchable entity browser with live preview, interactive controls, MJPEG camera streaming with snapshot fallback, local-network permission for LAN HA instances"
         }
       ]
     },
