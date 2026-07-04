@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-04-19T00:00:00Z",
+  "lastUpdated": "2026-07-04T00:00:00Z",
   "plugins": [
     {
       "id": "flag-status",
@@ -61,6 +61,14 @@
       "verified": false,
       "permissions": ["network", "localNetwork", "secrets"],
       "versions": [
+        {
+          "version": "1.2.0",
+          "minAppVersion": "1.0.0",
+          "releaseDate": "2026-07-04T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.2.0/plugin.tar.gz",
+          "sha256": "ab41d3e987025c46b886e8c3ed58a892fa8567da764bfe6c19c8468e1a7a0176",
+          "changelog": "Publish entity states to the shared-state bus for conditional widget visibility; new fast-updates lane for near-realtime entity state"
+        },
         {
           "version": "1.0.0",
           "minAppVersion": "1.0.0",
