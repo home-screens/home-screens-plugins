@@ -162,7 +162,7 @@
       "description": "Declared plugin capabilities. Most are transparency-only; 'localNetwork' is runtime-enforced by the proxy.",
       "items": {
         "type": "string",
-        "enum": ["network", "localNetwork", "secrets", "events", "storage"]
+        "enum": ["network", "localNetwork", "secrets", "events", "storage", "oauth"]
       },
       "uniqueItems": true
     },
@@ -185,9 +185,119 @@
         },
         "additionalProperties": false
       }
+    },
+    "auth": { "$ref": "#/$defs/PluginAuth" },
+    "translations": {
+      "type": "object",
+      "description": "Maps locale codes (e.g. 'en-US') to translation file paths relative to the plugin root",
+      "additionalProperties": { "type": "string" }
     }
   },
   "$defs": {
+    "PluginAuth": {
+      "description": "Server-side auth adapter declaration. The host implements the flow; plugins declare which one they need.",
+      "oneOf": [
+        { "$ref": "#/$defs/OAuth2Auth" },
+        { "$ref": "#/$defs/GarminAuth" }
+      ]
+    },
+    "GarminAuth": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "garmin" }
+      }
+    },
+    "OAuth2Auth": {
+      "type": "object",
+      "description": "Declarative OAuth2 configuration covering the three standard grant flows",
+      "required": ["type", "flow", "tokenUrl", "scopes", "tokenPlacement", "tokenTargetDomains", "secrets"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "oauth2" },
+        "flow": {
+          "type": "string",
+          "enum": ["authorization_code", "device_code", "client_credentials"]
+        },
+        "authorizationUrl": {
+          "type": "string",
+          "description": "Required for authorization_code and device_code flows"
+        },
+        "tokenUrl": { "type": "string" },
+        "revokeUrl": { "type": "string" },
+        "revokeTokenType": {
+          "type": "string",
+          "enum": ["access_token", "refresh_token"],
+          "description": "Defaults to 'access_token'"
+        },
+        "scopes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "scopeSeparator": {
+          "type": "string",
+          "description": "Defaults to ' '"
+        },
+        "pkce": {
+          "type": "boolean",
+          "description": "Defaults to true for authorization_code"
+        },
+        "clientAuthentication": {
+          "type": "string",
+          "enum": ["body", "header", "none"],
+          "description": "Defaults to 'body'"
+        },
+        "tokenPlacement": {
+          "type": "string",
+          "enum": ["header", "query"]
+        },
+        "tokenParamName": {
+          "type": "string",
+          "description": "Required when tokenPlacement is 'query'"
+        },
+        "tokenTargetDomains": {
+          "type": "array",
+          "description": "Non-empty subset of allowedDomains that receive the token",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "extraAuthParams": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "extraTokenParams": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "tokenResponseTransform": {
+          "type": "object",
+          "description": "Handle non-standard token responses (dot paths into the response JSON)",
+          "additionalProperties": false,
+          "properties": {
+            "accessTokenPath": { "type": "string" },
+            "refreshTokenPath": { "type": "string" },
+            "expiresInPath": { "type": "string" },
+            "expiresInUnit": { "type": "string", "enum": ["seconds", "milliseconds"] }
+          }
+        },
+        "secrets": {
+          "type": "object",
+          "required": ["clientId"],
+          "additionalProperties": false,
+          "properties": {
+            "clientId": {
+              "type": "string",
+              "description": "Key name in plugin secrets[]"
+            },
+            "clientSecret": {
+              "type": "string",
+              "description": "Optional for public PKCE clients"
+            }
+          }
+        }
+      }
+    },
     "ModuleCategory": {
       "type": "string",
       "enum": [
@@ -196,6 +306,7 @@
         "News & Finance",
         "Knowledge & Fun",
         "Personal",
+        "Health & Fitness",
         "Media & Display",
         "Travel"
       ],

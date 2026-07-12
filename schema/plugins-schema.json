@@ -34,6 +34,7 @@
         "News & Finance",
         "Knowledge & Fun",
         "Personal",
+        "Health & Fitness",
         "Media & Display",
         "Travel"
       ],
@@ -145,7 +146,7 @@
           "description": "Declared plugin capabilities surfaced to users during install. 'localNetwork' is runtime-enforced by the proxy.",
           "items": {
             "type": "string",
-            "enum": ["network", "localNetwork", "secrets", "events", "storage"]
+            "enum": ["network", "localNetwork", "secrets", "events", "storage", "oauth"]
           },
           "uniqueItems": true
         },
