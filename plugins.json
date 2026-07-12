@@ -224,6 +224,14 @@
           "downloadUrl": "https://github.com/home-screens/home-screens-plugin-garmin/releases/download/v1.1.0/plugin.tar.gz",
           "sha256": "9e72d829b50050a285ae9635475e2435d13427277e36c9cdbeadf7f25911dd43",
           "changelog": "Initial release: daily summary, Body Battery, sleep, activities, latest activity, and weekly training views with host-managed Garmin sign-in"
+        },
+        {
+          "version": "1.2.0",
+          "minAppVersion": "1.7.0",
+          "releaseDate": "2026-07-12T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-garmin/releases/download/v1.2.0/plugin.tar.gz",
+          "sha256": "75efa8bd77e2391388ff9789c35cf58065f13560cdc1e1277f41f5c0a42e189f",
+          "changelog": "Adds training status, HRV, heart rate, and weight views"
         }
       ]
     }
