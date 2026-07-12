@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-07-04T00:00:00Z",
+  "lastUpdated": "2026-07-12T00:00:00Z",
   "plugins": [
     {
       "id": "flag-status",
@@ -115,6 +115,29 @@
           "downloadUrl": "https://github.com/home-screens/home-screens-plugin-celestial/releases/download/v1.3.0/plugin.tar.gz",
           "sha256": "b89376e402b1673b553c2258cf3a11d1caede69ecaa2ea4e4896e1a3682c52be",
           "changelog": "Initial release: sky arc with bezier smoothing, NASA moon photo with earthshine, procedural SVG sun, dawn/dusk tints, compact view"
+        }
+      ]
+    },
+    {
+      "id": "strava",
+      "name": "Strava",
+      "description": "Show your Strava life on the wall: recent activities, weekly and yearly stat tiles, goal rings, a 52-week training heatmap, your latest route, and an athlete card. Strava Subscription Required: Strava only lets subscribers create the free API app this plugin connects through, so you need an active Strava subscription to set it up.",
+      "author": "home-screens",
+      "repo": "home-screens/home-screens-plugin-strava",
+      "license": "MIT",
+      "category": "Health & Fitness",
+      "tags": ["strava", "running", "cycling", "fitness", "training", "activities", "heatmap"],
+      "icon": "Activity",
+      "verified": true,
+      "permissions": ["network", "secrets", "oauth"],
+      "versions": [
+        {
+          "version": "1.0.0",
+          "minAppVersion": "1.7.0",
+          "releaseDate": "2026-07-12T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-strava/releases/download/v1.0.0/plugin.tar.gz",
+          "sha256": "1d25b218ab773d436e7836ad304c0c30670c7c1ba4924cd0a8cd2726ad9d187b",
+          "changelog": "Initial release: 12 views with host-managed Strava OAuth"
         }
       ]
     }
