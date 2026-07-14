@@ -161,7 +161,7 @@
     {
       "id": "strava",
       "name": "Strava",
-      "description": "Show your Strava life on the wall: recent activities, weekly and yearly stat tiles, goal rings, a 52-week training heatmap, your latest route, and an athlete card. Strava Subscription Required: Strava only lets subscribers create the free API app this plugin connects through, so you need an active Strava subscription to set it up.",
+      "description": "Show your Strava life on the wall: recent activities, weekly and yearly stat tiles, goal rings, a 52-week training heatmap, a map of everywhere you go, gear mileage, segment PRs, your Eddington number, and more. Strava Subscription Required: Strava only lets subscribers create the free API app this plugin connects through, so you need an active Strava subscription to set it up.",
       "author": "home-screens",
       "repo": "home-screens/home-screens-plugin-strava",
       "license": "MIT",
@@ -183,6 +183,14 @@
         "oauth"
       ],
       "versions": [
+        {
+          "version": "1.1.0",
+          "minAppVersion": "1.7.0",
+          "releaseDate": "2026-07-13T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-strava/releases/download/v1.1.0/plugin.tar.gz",
+          "sha256": "ee5f473d4be6ed925719ec95a3031746eb25b4669b787af44ea94567ff08c00f",
+          "changelog": "10 new views including route map, fitness trend, this year vs last, segment PRs, gear, photos, and milestones, plus richer activity details"
+        },
         {
           "version": "1.0.0",
           "minAppVersion": "1.7.0",
