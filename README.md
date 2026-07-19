@@ -19,7 +19,7 @@ schema/
 
 ### plugins.json
 
-The registry file listing all available plugins with their metadata, versions, and download URLs. Validated by `schema/plugins-schema.json`.
+The registry file listing all available plugins with their metadata, versions, and download URLs. Validated by `schema/plugins-schema.json`. Entries and individual versions may carry an optional `channel` field (`stable` by default, or `beta` to keep a plugin or build hidden from users who have not opted into beta plugins) — see [CONTRIBUTING.md](CONTRIBUTING.md#release-channels) for details.
 
 ### manifest-schema.json
 

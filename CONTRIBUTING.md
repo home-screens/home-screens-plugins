@@ -106,6 +106,8 @@ Before submitting, make sure you have:
    }
    ```
 
+   The `channel` field is optional on both the plugin entry and on individual version rows. Omit it for stable, which is the default. See [Release channels](#release-channels) below.
+
 3. **Validate** your entry against the schema:
 
    ```bash
@@ -139,6 +141,16 @@ sha256sum plugin.tar.gz
 - Plugins using the server-side proxy (`pluginFetch`) or storing secrets must declare `permissions: ["network", "secrets"]`.
 - Permissions must honestly reflect the plugin's actual capabilities. Undeclared capabilities will be flagged during review.
 - A license is required. MIT or Apache-2.0 are recommended for maximum compatibility.
+- The `channel` field is optional. Omit it for a normal stable release. See [Release channels](#release-channels) for when and how to use `beta`.
+
+## Release channels
+
+The optional `channel` field lets you ship prerelease builds to testers without exposing them to everyone. It defaults to stable when omitted, and it works at two levels:
+
+- **On the plugin entry** (top level, alongside `id`, `name`, etc.): marks the whole plugin as beta. It stays hidden from the store's Browse tab unless the user has opted into beta plugins. Use this for a plugin that is not yet ready for a general release.
+- **On a single version row** (inside the `versions` array): lets an otherwise-stable plugin ship one beta build (for example a `1.2.0-beta.1` prerelease) next to its stable releases. Only users who have opted into beta plugins are offered that version; everyone else continues to get your latest stable version.
+
+Both accept only `"stable"` or `"beta"`. Leaving the field out is the same as `"stable"`.
 
 ## Review Process
 
@@ -155,8 +167,9 @@ After you open a PR:
 To publish a new version:
 
 1. Release a new tarball on your GitHub repo.
-2. Open a PR adding the new version entry to the beginning of your `versions` array in `plugins.json`.
+2. Open a PR adding the new version entry to the beginning of your `versions` array in `plugins.json`. Keeping the array newest-first is the convention we ask for so the file is easy for humans to read, but the app itself does not rely on it: it picks the latest version by semver comparison across the compatible versions, not by array position. A misordered array is a cosmetic issue, not a functional break (a `1.2.0-beta.1` prerelease still ranks below its final `1.2.0` and above `1.1.0` no matter where you place it).
 3. Include the new SHA-256 hash and download URL.
+4. To ship a beta build, add `"channel": "beta"` to that version row (see [Release channels](#release-channels)). Your latest stable version keeps flowing to everyone else.
 
 ## Questions?
 

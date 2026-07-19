@@ -78,6 +78,11 @@
         "changelog": {
           "type": "string",
           "description": "Release notes for this version (optional)"
+        },
+        "channel": {
+          "type": "string",
+          "enum": ["stable", "beta"],
+          "description": "Release channel for this version. Omit for stable (default). 'beta' lets a stable plugin ship a beta build (e.g. a '1.2.0-beta.1' prerelease) alongside its stable releases; the app only offers this version to users who have opted into beta plugins."
         }
       }
     },
@@ -150,13 +155,18 @@
           },
           "uniqueItems": true
         },
+        "channel": {
+          "type": "string",
+          "enum": ["stable", "beta"],
+          "description": "Release channel for the whole plugin. Omit for stable (default). 'beta' hides the plugin from the store's Browse tab unless the user has opted into beta plugins, useful for a plugin that is not yet ready for general release."
+        },
         "versions": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/RegistryPluginVersion"
           },
           "minItems": 1,
-          "description": "Available versions (newest first)"
+          "description": "Available versions. List newest first as a readability convention; the app itself picks the latest by semver comparison of compatible versions, not by array position."
         }
       }
     }
