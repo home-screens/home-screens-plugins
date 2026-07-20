@@ -253,6 +253,15 @@
       ],
       "versions": [
         {
+          "version": "1.4.0-beta.2",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-20T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-garmin/releases/download/v1.4.0-beta.2/plugin.tar.gz",
+          "sha256": "698d483df07837503863a9431a423ff8125597f83399a2a6fdca04d32bcbe708",
+          "changelog": "Fixes StateProvider being silently missing from the built bundle, so shared-state keys actually publish",
+          "channel": "beta"
+        },
+        {
           "version": "1.4.0-beta.1",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-07-20T00:00:00Z",
