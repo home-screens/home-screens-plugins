@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-07-13T00:00:00Z",
+  "lastUpdated": "2026-07-20T00:00:00Z",
   "plugins": [
     {
       "id": "flag-status",
@@ -92,6 +92,15 @@
         "secrets"
       ],
       "versions": [
+        {
+          "version": "1.4.0-beta.1",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-20T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.4.0-beta.1/plugin.tar.gz",
+          "sha256": "a5579742418f04175c5e5c03973231194d9c89af615813561c839823965387bb",
+          "changelog": "Buttons view with light controls and 24-hour sensor history, alerts view with per-entity look rules, on-demand entity state publishing, and condition-builder search",
+          "channel": "beta"
+        },
         {
           "version": "1.3.1",
           "minAppVersion": "1.0.0",
