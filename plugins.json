@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-07-20T00:00:00Z",
+  "lastUpdated": "2026-07-20T16:15:00Z",
   "plugins": [
     {
       "id": "flag-status",
@@ -192,6 +192,15 @@
         "oauth"
       ],
       "versions": [
+        {
+          "version": "1.2.0-beta.1",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-20T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-strava/releases/download/v1.2.0-beta.1/plugin.tar.gz",
+          "sha256": "22bc68e50fff8a367e1c5ac680a50eee0ac325baaf4e1e6693e88f38fce5e7a5",
+          "changelog": "Publishes shared state (last activity type/date, current streak, days since last activity, Eddington number) via a new StateProvider",
+          "channel": "beta"
+        },
         {
           "version": "1.1.0",
           "minAppVersion": "1.7.0",
