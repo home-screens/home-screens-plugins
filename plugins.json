@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-07-20T16:15:00Z",
+  "lastUpdated": "2026-07-20T16:20:00Z",
   "plugins": [
     {
       "id": "flag-status",
@@ -243,6 +243,15 @@
         "oauth"
       ],
       "versions": [
+        {
+          "version": "1.4.0-beta.1",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-20T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-garmin/releases/download/v1.4.0-beta.1/plugin.tar.gz",
+          "sha256": "1813e99d3ba548de774f17835fb4a0a9ff8b60ca606afcdb217f2ff391096f36",
+          "changelog": "Publishes Garmin shared state (Body Battery, sleep score, steps) from a background provider even when no Garmin module is on screen",
+          "channel": "beta"
+        },
         {
           "version": "1.3.0",
           "minAppVersion": "1.7.1",
