@@ -93,6 +93,14 @@
       ],
       "versions": [
         {
+          "version": "1.4.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-25T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.4.0/plugin.tar.gz",
+          "sha256": "f1d6f2131bed265acb5d5eaa0fd16dbc6dd53407d57e4c8afe607111f5b88cfc",
+          "changelog": "Buttons, alerts, batteries, and power views; detail sheets for climate, covers, and fan speed; media transport controls; 24-hour sensor history with labeled highs and lows; per-entity look rules and automatic state colors"
+        },
+        {
           "version": "1.4.0-beta.1",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-07-20T00:00:00Z",
