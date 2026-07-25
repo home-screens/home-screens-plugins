@@ -269,6 +269,14 @@
       ],
       "versions": [
         {
+          "version": "1.4.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-25T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-garmin/releases/download/v1.4.0/plugin.tar.gz",
+          "sha256": "f0acec2fee5c224bf41c8eb780edd011c4a088627d9f23e78b785f3bce670662",
+          "changelog": "Body Battery, sleep score, and steps stay available to conditions and rules even when no Garmin module is on screen"
+        },
+        {
           "version": "1.4.0-beta.2",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-07-20T00:00:00Z",
