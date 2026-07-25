@@ -201,6 +201,14 @@
       ],
       "versions": [
         {
+          "version": "1.2.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-25T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-strava/releases/download/v1.2.0/plugin.tar.gz",
+          "sha256": "b81cbf31fd9f3b3c47e30f0ede493af96dfb00d3bac33333cb7149827630e8be",
+          "changelog": "Publishes shared state (last activity type/date, current streak, days since last activity, Eddington number) so other plugins and rules can react to your Strava activity"
+        },
+        {
           "version": "1.2.0-beta.2",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-07-20T00:00:00Z",
