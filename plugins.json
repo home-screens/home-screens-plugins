@@ -93,6 +93,14 @@
       ],
       "versions": [
         {
+          "version": "1.5.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-27T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.5.0/plugin.tar.gz",
+          "sha256": "729c60fd189e12ffeb62075c641589c2dc2304dc805500c1cbe587eea52418ea",
+          "changelog": "Everything in the widget scales off the host's Text size, colors follow the host's Text color including a light-background palette, border and shadow settings now apply, and all text is translated into seven languages"
+        },
+        {
           "version": "1.4.0",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-07-25T00:00:00Z",
