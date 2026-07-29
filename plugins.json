@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastUpdated": "2026-07-20T17:20:00Z",
+  "lastUpdated": "2026-07-28T00:00:00Z",
   "plugins": [
     {
       "id": "flag-status",
@@ -23,6 +23,14 @@
         "network"
       ],
       "versions": [
+        {
+          "version": "1.1.0",
+          "minAppVersion": "0.21.0",
+          "releaseDate": "2026-07-28T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-flag-status/releases/download/v1.1.0/plugin.tar.gz",
+          "sha256": "82939b9b402fd7719f05e7138c4642cd150454202cee581a8c1e1b38761f7adc",
+          "changelog": "Every control in the Style panel now works: border, shadow, padding, and opacity alongside background blur; the flag and text scale with the Text size setting"
+        },
         {
           "version": "1.0.0",
           "minAppVersion": "0.20.0",
@@ -58,6 +66,14 @@
       ],
       "versions": [
         {
+          "version": "1.1.0",
+          "minAppVersion": "0.21.0",
+          "releaseDate": "2026-07-28T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-json-data/releases/download/v1.1.0/plugin.tar.gz",
+          "sha256": "d39161525999730c6a3a255f9608e9345e83f99345e84b5d161556c3e87d786b",
+          "changelog": "Every control in the Style panel now works: border, shadow, padding, and opacity alongside background blur; text, spacing, and table sizing scale with the Text size setting"
+        },
+        {
           "version": "1.0.0",
           "minAppVersion": "0.21.0",
           "releaseDate": "2026-03-26T00:00:00Z",
@@ -92,6 +108,14 @@
         "secrets"
       ],
       "versions": [
+        {
+          "version": "1.6.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-28T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.6.0/plugin.tar.gz",
+          "sha256": "cacf8164fc5bdacaadd99880bfb243fd3f89941849417b97b5133b0a5960100f",
+          "changelog": "Robot vacuums and mowers now appear with their state translated into all seven languages, and the config editor's display settings are reorganized to show only the ones that apply to the chosen view"
+        },
         {
           "version": "1.5.0",
           "minAppVersion": "1.8.0",
@@ -174,6 +198,14 @@
       "permissions": [],
       "versions": [
         {
+          "version": "1.4.0",
+          "minAppVersion": "0.21.0",
+          "releaseDate": "2026-07-28T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-celestial/releases/download/v1.4.0/plugin.tar.gz",
+          "sha256": "8ad9739061a5fb9178cfc72b111c592c070832e93a9bc6b8dff9216a903cdb5e",
+          "changelog": "Every control in the Style panel now works: border, shadow, padding, and opacity alongside background blur; sun and moon visuals scale with the Text size setting"
+        },
+        {
           "version": "1.3.0",
           "minAppVersion": "1.0.0",
           "releaseDate": "2026-04-12T00:00:00Z",
@@ -208,6 +240,14 @@
         "oauth"
       ],
       "versions": [
+        {
+          "version": "1.4.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-28T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-strava/releases/download/v1.4.0/plugin.tar.gz",
+          "sha256": "e1641cd546a7bc07d71f67293da7faaac11c02b00da010c20e8442b1397495b0",
+          "changelog": "Border, shadow, padding, and opacity from the Style panel now apply, and colors are resolved once and reused so the module redraws less often"
+        },
         {
           "version": "1.3.0",
           "minAppVersion": "1.8.0",
@@ -285,6 +325,14 @@
       ],
       "versions": [
         {
+          "version": "1.5.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-07-28T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-garmin/releases/download/v1.5.0/plugin.tar.gz",
+          "sha256": "0530004d492444b42246b89fb01b71521f1a7ef5a157e0923582f87741fd0b5a",
+          "changelog": "Border, shadow, padding, and opacity from the Style panel now apply; the chosen font is used; colors with transparency are read correctly; contents scale with the Text size setting"
+        },
+        {
           "version": "1.4.0",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-07-25T00:00:00Z",
@@ -333,6 +381,39 @@
           "downloadUrl": "https://github.com/home-screens/home-screens-plugin-garmin/releases/download/v1.1.0/plugin.tar.gz",
           "sha256": "9e72d829b50050a285ae9635475e2435d13427277e36c9cdbeadf7f25911dd43",
           "changelog": "Initial release: daily summary, Body Battery, sleep, activities, latest activity, and weekly training views with host-managed Garmin sign-in"
+        }
+      ]
+    },
+    {
+      "id": "rss-feed",
+      "name": "RSS Feed Reader",
+      "description": "Follow any RSS, Atom, or JSON feed. Merge headlines from multiple sources into a list, compact, or rotating view.",
+      "author": "home-screens",
+      "repo": "home-screens/home-screens-plugin-rss",
+      "license": "MIT",
+      "category": "News & Finance",
+      "tags": [
+        "rss",
+        "atom",
+        "feed",
+        "news",
+        "headlines",
+        "blog"
+      ],
+      "icon": "Radio",
+      "verified": true,
+      "permissions": [
+        "network",
+        "localNetwork"
+      ],
+      "versions": [
+        {
+          "version": "1.0.0",
+          "minAppVersion": "1.3.0",
+          "releaseDate": "2026-07-28T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-rss/releases/download/v1.0.0/plugin.tar.gz",
+          "sha256": "59b847a6bb2eade8bd07d323d3f9f8bda3b5e19d1a57d39cd3cd83f062de62e3",
+          "changelog": "Initial release: RSS, Atom, and JSON feeds merged into list, compact, or rotating views with optional source names, timestamps, descriptions, and thumbnails"
         }
       ]
     }
