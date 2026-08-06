@@ -109,6 +109,14 @@
       ],
       "versions": [
         {
+          "version": "1.7.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-08-06T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.7.0/plugin.tar.gz",
+          "sha256": "2014de56106664de1c413def60d7e8b743712255f3f4e94e9d5c2a9138501f1d",
+          "changelog": "The entity picker now shows only the entities your chosen view can actually display, sorts the most useful one to the top, and points out picks the view will ignore. Big numbers no longer get their bottoms cut off."
+        },
+        {
           "version": "1.6.0",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-07-28T00:00:00Z",
