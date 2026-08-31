@@ -109,6 +109,14 @@
       ],
       "versions": [
         {
+          "version": "1.8.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-08-30T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.8.0/plugin.tar.gz",
+          "sha256": "22b5951e9e1203eff3d492d3e421e76d7eded82f21d21413955eaae2571421e9",
+          "changelog": "Three new full-screen views for wall displays. Dashboard shows your whole home as rooms of tiles you can tap and hold. Energy flow draws solar, grid, battery, and house as a live diagram. Timeline shows what happened today, hour by hour. Holding a light now opens a bigger sheet with brightness, color, and warmth."
+        },
+        {
           "version": "1.7.0",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-08-06T00:00:00Z",
