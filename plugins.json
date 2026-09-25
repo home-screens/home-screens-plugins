@@ -109,6 +109,14 @@
       ],
       "versions": [
         {
+          "version": "1.9.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-09-24T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.9.0/plugin.tar.gz",
+          "sha256": "42aa5c185ff936016c911efc212dd4fba13c13371c4c9df7bd0cd91ae4a45e9c",
+          "changelog": "Look rules can use any Home Assistant icon and can hide a device's icon or value text, and the Status Board gets switches for row lines and status dots, with rows lined up under the title."
+        },
+        {
           "version": "1.8.0",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-08-30T00:00:00Z",
