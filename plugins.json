@@ -101,7 +101,7 @@
         "cameras"
       ],
       "icon": "Home",
-      "verified": false,
+      "verified": true,
       "permissions": [
         "network",
         "localNetwork",
