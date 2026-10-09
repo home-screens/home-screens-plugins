@@ -94,6 +94,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           branch: submission/issue-${{ github.event.issue.number }}
+          add-paths: plugins.json
           commit-message: ${{ steps.entry.outputs.update == 'true' && format('Add {0} v{1}', steps.entry.outputs.name, steps.entry.outputs.version) || format('Add {0} plugin v{1}', steps.entry.outputs.name, steps.entry.outputs.version) }}
           title: ${{ steps.entry.outputs.update == 'true' && format('Add {0} v{1}', steps.entry.outputs.name, steps.entry.outputs.version) || format('Add {0} plugin', steps.entry.outputs.name) }}
           body: |
