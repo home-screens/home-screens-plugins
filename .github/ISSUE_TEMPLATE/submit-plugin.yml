@@ -1,0 +1,34 @@
+name: Submit a plugin
+description: List a plugin in the registry. homescreens.dev/plugins/submit fills this in for you.
+title: "Add <plugin name> v<version>"
+labels: ["plugin-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for building a plugin. The easy path is [homescreens.dev/plugins/submit](https://homescreens.dev/plugins/submit): paste your repo link there, it checks the manifest and release and opens this form with everything filled in.
+
+        Once this issue is opened, a workflow turns it into a pull request that adds your entry to `plugins.json` and checks it against the schema. A maintainer then installs the plugin on a test hub and reviews the bundle. Most reviews finish within a week.
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: The GitHub repo, as owner/name.
+      placeholder: you/home-screens-plugin-thing
+    validations:
+      required: true
+  - type: textarea
+    id: entry
+    attributes:
+      label: Registry entry
+      description: The JSON object to add to the `plugins` list. See CONTRIBUTING.md for the fields.
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Before you send it
+      options:
+        - label: The release has `plugin.tar.gz` attached and the `sha256` in the entry is that file's hash.
+        - label: The permissions in the entry are everything the plugin does.

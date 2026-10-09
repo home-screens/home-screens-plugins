@@ -65,6 +65,8 @@ Your plugin **must** use one of these exact category values:
 
 ## Submitting a Plugin
 
+The easy path is **[homescreens.dev/plugins/submit](https://homescreens.dev/plugins/submit)**: paste your repo link, it reads the manifest and latest release, checks the entry, and opens a prefilled issue here that a workflow turns into the pull request. No fork needed. The manual path below still works and does the same thing by hand.
+
 ### Prerequisites
 
 Before submitting, make sure you have:
@@ -108,10 +110,12 @@ Before submitting, make sure you have:
 
    The `channel` field is optional on both the plugin entry and on individual version rows. Omit it for stable, which is the default. See [Release channels](#release-channels) below.
 
+   `screenshots` is also optional: a list of `{ "src", "caption" }` objects with full image URLs, shown on your plugin's page at homescreens.dev/plugins. The app ignores it.
+
 3. **Validate** your entry against the schema:
 
    ```bash
-   npx ajv validate -s schema/plugins-schema.json -d plugins.json --spec=draft2020
+   npx -p ajv-cli -p ajv-formats ajv validate -s schema/plugins-schema.json -d plugins.json --spec=draft2020 -c ajv-formats
    ```
 
 4. **Open a Pull Request** with a clear description of your plugin.

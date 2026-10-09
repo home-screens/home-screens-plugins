@@ -155,6 +155,19 @@
           },
           "uniqueItems": true
         },
+        "screenshots": {
+          "type": "array",
+          "description": "Pictures shown on the plugin's page at homescreens.dev/plugins. The app ignores this field. Use full https URLs, for example raw.githubusercontent.com links into the plugin repo.",
+          "items": {
+            "type": "object",
+            "required": ["src"],
+            "additionalProperties": false,
+            "properties": {
+              "src": { "type": "string", "format": "uri", "description": "Image URL (PNG or WebP, 4:3 or wider works best)" },
+              "caption": { "type": "string", "description": "A few words under the picture" }
+            }
+          }
+        },
         "channel": {
           "type": "string",
           "enum": ["stable", "beta"],

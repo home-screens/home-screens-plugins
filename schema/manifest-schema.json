@@ -89,6 +89,10 @@
       "$ref": "#/$defs/PluginConfigSchema",
       "description": "Optional schema describing the plugin's configurable properties"
     },
+    "settingsSchema": {
+      "$ref": "#/$defs/PluginConfigSchema",
+      "description": "Optional schema for settings that apply to the whole plugin rather than one module, shown on the plugin's row in the editor's Installed tab"
+    },
     "exports": {
       "type": "object",
       "required": ["component"],
@@ -101,6 +105,10 @@
         "configSection": {
           "type": "string",
           "description": "Optional named export for the config editor section"
+        },
+        "stateProvider": {
+          "type": "string",
+          "description": "Optional named export of a component that publishes shared state while the plugin is installed, even with no module on screen"
         }
       }
     },
@@ -132,7 +140,14 @@
         "borderRadius": { "type": "number" },
         "padding": { "type": "number" },
         "opacity": { "type": "number" },
-        "backdropBlur": { "type": "number" }
+        "backdropBlur": { "type": "number" },
+        "textScale": { "type": "number" },
+        "fontWeight": { "type": "number" },
+        "title": { "type": "string" },
+        "titleFontSize": { "type": "number" },
+        "borderWidth": { "type": "number" },
+        "borderColor": { "type": "string" },
+        "shadowSize": { "type": "number" }
       },
       "additionalProperties": false
     },
@@ -191,6 +206,24 @@
       "type": "object",
       "description": "Maps locale codes (e.g. 'en-US') to translation file paths relative to the plugin root",
       "additionalProperties": { "type": "string" }
+    },
+    "providesState": {
+      "type": "array",
+      "description": "Shared-state keys the plugin publishes, so the editor can offer them in visibility conditions. Keys are lowercase; the app prefixes them with plugin:<id>:",
+      "items": {
+        "type": "object",
+        "required": ["key", "label"],
+        "additionalProperties": false,
+        "properties": {
+          "key": { "type": "string", "description": "Key name without the plugin:<id>: prefix" },
+          "label": { "type": "string", "description": "What the key means, for the editor" },
+          "sampleValues": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Example values shown next to the key"
+          }
+        }
+      }
     }
   },
   "$defs": {

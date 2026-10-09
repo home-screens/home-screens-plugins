@@ -1,0 +1,136 @@
+# Turns a "Submit a plugin" issue into a pull request.
+#
+# The issue form (.github/ISSUE_TEMPLATE/submit-plugin.yml) carries the
+# registry entry as a JSON block. This reads it, adds it to plugins.json,
+# validates the result against the schema, opens a PR from a branch named
+# after the issue, and comments on the issue with the outcome. Editing the
+# issue runs it again and updates the same branch, so an author can fix a
+# problem without opening a second issue.
+#
+# It runs with the workflow's own token: no personal access token is stored
+# here. One consequence is that the PR it opens does not trigger other
+# workflows; the validation below is run here instead.
+name: Plugin submission
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  submission:
+    if: contains(github.event.issue.labels.*.name, 'plugin-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Read the entry from the issue
+        id: entry
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = context.payload.issue.body ?? '';
+            const match = body.match(/### Registry entry\s+```json\s*([\s\S]*?)```/);
+            if (!match) {
+              core.setOutput('error', 'The issue has no "Registry entry" JSON block. Open it from homescreens.dev/plugins/submit, or paste the entry into that field.');
+              return;
+            }
+            let entry;
+            try {
+              entry = JSON.parse(match[1]);
+            } catch (err) {
+              core.setOutput('error', `The registry entry is not valid JSON: ${err.message}`);
+              return;
+            }
+            if (!entry || typeof entry !== 'object' || typeof entry.id !== 'string') {
+              core.setOutput('error', 'The registry entry needs at least an "id".');
+              return;
+            }
+            entry.verified = false;
+            const registry = JSON.parse(fs.readFileSync('plugins.json', 'utf8'));
+            const existing = registry.plugins.findIndex((p) => p.id === entry.id);
+            if (existing === -1) {
+              registry.plugins.push(entry);
+            } else {
+              // A new version of a listed plugin: keep the listing's own
+              // fields and add the submitted versions in front.
+              const current = registry.plugins[existing];
+              const known = new Set(current.versions.map((v) => v.version));
+              const added = (entry.versions ?? []).filter((v) => !known.has(v.version));
+              if (added.length === 0) {
+                core.setOutput('error', `${entry.id} is already listed and every version in the entry is already there.`);
+                return;
+              }
+              current.versions = [...added, ...current.versions];
+            }
+            registry.lastUpdated = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
+            fs.writeFileSync('plugins.json', JSON.stringify(registry, null, 2) + '\n');
+            core.setOutput('id', entry.id);
+            core.setOutput('name', entry.name ?? entry.id);
+            core.setOutput('version', entry.versions?.[0]?.version ?? '');
+            core.setOutput('repo', entry.repo ?? '');
+            core.setOutput('update', existing === -1 ? 'false' : 'true');
+
+      - name: Validate against the schema
+        id: validate
+        if: steps.entry.outputs.error == ''
+        continue-on-error: true
+        run: |
+          npx --yes -p ajv-cli@5 -p ajv-formats ajv validate -s schema/plugins-schema.json -d plugins.json --spec=draft2020 -c ajv-formats 2>&1 | tee validation.txt
+          test "${PIPESTATUS[0]}" -eq 0
+
+      - name: Open or update the pull request
+        id: pr
+        if: steps.entry.outputs.error == '' && steps.validate.outcome == 'success'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: submission/issue-${{ github.event.issue.number }}
+          commit-message: ${{ steps.entry.outputs.update == 'true' && format('Add {0} v{1}', steps.entry.outputs.name, steps.entry.outputs.version) || format('Add {0} plugin v{1}', steps.entry.outputs.name, steps.entry.outputs.version) }}
+          title: ${{ steps.entry.outputs.update == 'true' && format('Add {0} v{1}', steps.entry.outputs.name, steps.entry.outputs.version) || format('Add {0} plugin', steps.entry.outputs.name) }}
+          body: |
+            Submitted in #${{ github.event.issue.number }} from ${{ steps.entry.outputs.repo }}.
+
+            - [ ] Installed on a test hub
+            - [ ] Bundle read; permissions match
+            - [ ] `sha256` matches the release asset
+
+            Closes #${{ github.event.issue.number }}
+          labels: plugin-submission
+          delete-branch: true
+
+      - name: Comment on the issue
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          ENTRY_ERROR: ${{ steps.entry.outputs.error }}
+          VALIDATE_OUTCOME: ${{ steps.validate.outcome }}
+          PR_URL: ${{ steps.pr.outputs.pull-request-url }}
+        with:
+          script: |
+            const fs = require('fs');
+            let text;
+            if (process.env.ENTRY_ERROR) {
+              text = `Could not read this submission: ${process.env.ENTRY_ERROR}\n\nEdit the issue and the check runs again.`;
+            } else if (process.env.VALIDATE_OUTCOME !== 'success') {
+              const details = fs.existsSync('validation.txt') ? fs.readFileSync('validation.txt', 'utf8').trim() : '';
+              text = `The entry does not match the registry schema:\n\n\`\`\`\n${details}\n\`\`\`\n\nEdit the issue and the check runs again.`;
+            } else if (process.env.PR_URL) {
+              text = `Thanks! The entry is in ${process.env.PR_URL}. A maintainer will install the plugin on a test hub and review the bundle; most reviews finish within a week.`;
+            } else {
+              text = 'The entry passed the schema check but no pull request was opened. A maintainer will take a look.';
+            }
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: text,
+            });
