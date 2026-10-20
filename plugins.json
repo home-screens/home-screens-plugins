@@ -109,6 +109,14 @@
       ],
       "versions": [
         {
+          "version": "1.10.0",
+          "minAppVersion": "1.8.0",
+          "releaseDate": "2026-10-19T00:00:00Z",
+          "downloadUrl": "https://github.com/home-screens/home-screens-plugin-home-assistant/releases/download/v1.10.0/plugin.tar.gz",
+          "sha256": "6eed33aad729dc192beec4fb63d6336cee3fe55d1ff713aa85c41bf10376deca",
+          "changelog": "Adds a Show names switch so cards can show just an icon and a value, for clean floor plans."
+        },
+        {
           "version": "1.9.0",
           "minAppVersion": "1.8.0",
           "releaseDate": "2026-09-24T00:00:00Z",
